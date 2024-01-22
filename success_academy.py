@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 
 st.image("SA.png")
 
@@ -19,18 +18,21 @@ if option == 'SA Girls':
     value_counts_g = success_joint['Game Result'].value_counts
     fig = px.bar(success_joint, x = value_counts_g().index, y = value_counts_g().values, 
                  title="Results of SA Girls Games", labels={'x': '(Wins, Losses, or Ties)', 'y':'Count of Games'})
+    fig.update_layout(xaxis_fixedrange=True, yaxis_fixedrange=True)
     st.write(fig)
 
 if option == 'SA Harlem':
     value_counts_h = success_harlem['Game Result'].value_counts
     fig = px.bar(success_harlem, x = value_counts_h().index, y = value_counts_h().values, 
                  title="Results of SA Harlem Games", labels={'x': '(Wins, Losses, or Ties)', 'y':'Count of Games'})
+    fig.update_layout(xaxis_fixedrange=True, yaxis_fixedrange=True)
     st.write(fig)
 
 if option == 'SA Manhattan':
     value_counts_m = success_manhattan['Game Result'].value_counts
     fig = px.bar(success_manhattan, x = value_counts_m().index, y = value_counts_m().values, 
                  title="Results of SA Manhattan Games", labels={'x': '(Wins, Losses, or Ties)', 'y':'Count of Games'})
+    fig.update_layout(xaxis_fixedrange=True, yaxis_fixedrange=True)
     st.write(fig)
 
 if option == 'All':
@@ -60,6 +62,7 @@ if option == 'All':
             "Goals Conceded: %{customdata[1]}"
         ])
     )
+    fig.update_layout(xaxis_fixedrange=True, yaxis_fixedrange=True)
     st.write(fig)
 
 def load_table(conf, a, b):
@@ -92,6 +95,7 @@ def load_table(conf, a, b):
                   yaxis_title="Goals Scored", 
                   hovermode="x")
     fig.update_traces(mode="markers+lines")
+    fig.update_layout(xaxis_fixedrange=True, yaxis_fixedrange=True)
     st.write(fig)
 
 
@@ -126,6 +130,7 @@ st.divider()
 
 def load_pie(conf, a, b):
     fig = px.pie(conf, values=a, names="Opponent", title="Share of total Goals " + b)
+    fig.update_layout(xaxis_fixedrange=True, yaxis_fixedrange=True)
     st.write(fig)
 
 
